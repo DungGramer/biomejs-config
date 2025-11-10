@@ -1,0 +1,55 @@
+# Directories
+.github/
+.vscode/
+node_modules/
+tests/
+examples/
+docs/
+coverage/
+.cache/
+dist/
+build/
+
+# Files
+.editorconfig
+.gitattributes
+.gitignore
+.releaserc.json
+commitlint.config.js
+CLAUDE.md
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+SECURITY.md
+
+# Test and CI files
+*.test.js
+*.spec.js
+*.test.ts
+*.spec.ts
+.eslintrc*
+.prettierrc*
+tsconfig.json
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Temporary
+*.tmp
+*.temp
+.tmp/
+.temp/
