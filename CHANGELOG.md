@@ -1,3 +1,16 @@
+## <small>1.1.1 (2025-11-14)</small>
+
+* fix: trigger v1.1.1 release to npm ([e5dd3ea](https://github.com/DungGramer/biomejs-config/commit/e5dd3ea))
+
+
+
+## [1.1.1](https://github.com/DungGramer/biomejs-config/compare/v1.1.0...v1.1.1) (2025-11-14)
+
+
+### Bug Fixes
+
+* trigger v1.1.1 release to npm ([e5dd3ea](https://github.com/DungGramer/biomejs-config/commit/e5dd3ea4410e90e7e1d6247941834173ba66d083))
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
