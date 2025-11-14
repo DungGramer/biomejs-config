@@ -15,8 +15,8 @@
       {
         "assets": [
           {
-            "path": "biome.jsonc",
-            "label": "Biome Configuration"
+            "label": "Biome Configuration",
+            "path": "biome.jsonc"
           }
         ]
       }

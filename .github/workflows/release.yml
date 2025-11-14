@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          persist-credentials: false
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
@@ -58,25 +58,72 @@ jobs:
     if: success()
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
+      - name: Get released version
+        id: version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Released version: $VERSION"
+
       - name: Wait for npm propagation
         run: sleep 60
 
-      - name: Verify package exists on npm
+      - name: Verify version exists on npm
         run: |
-          npm view @dunggramer/biomejs-config --json || {
-            echo "Package not found on npm registry"
-            exit 1
-          }
+          EXPECTED_VERSION="${{ steps.version.outputs.version }}"
+          PUBLISHED_VERSION=$(npm view @dunggramer/biomejs-config@$EXPECTED_VERSION version 2>/dev/null || echo "")
 
-      - name: Test installation
+          if [ -z "$PUBLISHED_VERSION" ]; then
+            echo "Error: Version $EXPECTED_VERSION not found on npm registry"
+            echo "Available versions:"
+            npm view @dunggramer/biomejs-config versions --json
+            exit 1
+          fi
+
+          if [ "$PUBLISHED_VERSION" != "$EXPECTED_VERSION" ]; then
+            echo "Error: Version mismatch"
+            echo "Expected: $EXPECTED_VERSION"
+            echo "Published: $PUBLISHED_VERSION"
+            exit 1
+          fi
+
+          echo "✓ Version $EXPECTED_VERSION is published on npm"
+
+      - name: Test installation of specific version
         run: |
+          EXPECTED_VERSION="${{ steps.version.outputs.version }}"
           mkdir test-install
           cd test-install
           npm init -y
-          npm install @dunggramer/biomejs-config @biomejs/biome
-          echo "✓ Package can be installed from npm"
+
+          echo "Installing @dunggramer/biomejs-config@$EXPECTED_VERSION"
+          npm install @dunggramer/biomejs-config@$EXPECTED_VERSION
+
+          INSTALLED_VERSION=$(node -p "require('./node_modules/@dunggramer/biomejs-config/package.json').version")
+
+          if [ "$INSTALLED_VERSION" != "$EXPECTED_VERSION" ]; then
+            echo "Error: Installed version mismatch"
+            echo "Expected: $EXPECTED_VERSION"
+            echo "Installed: $INSTALLED_VERSION"
+            exit 1
+          fi
+
+          echo "✓ Successfully installed version $INSTALLED_VERSION"
+
+          # Verify main file exists
+          if [ ! -f "node_modules/@dunggramer/biomejs-config/biome.jsonc" ]; then
+            echo "Error: Main file biome.jsonc not found in package"
+            exit 1
+          fi
+
+          echo "✓ Package structure is correct"

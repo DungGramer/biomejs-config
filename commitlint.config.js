@@ -19,29 +19,25 @@ module.exports = {
       2,
       'always',
       [
-        'feat',     // New feature
-        'fix',      // Bug fix
-        'docs',     // Documentation changes
-        'style',    // Code style changes (formatting, no functional changes)
+        'feat', // New feature
+        'fix', // Bug fix
+        'docs', // Documentation changes
+        'style', // Code style changes (formatting, no functional changes)
         'refactor', // Code refactoring
-        'perf',     // Performance improvements
-        'test',     // Adding or updating tests
-        'build',    // Build system changes
-        'ci',       // CI/CD changes
-        'chore',    // Maintenance tasks
-        'revert'    // Revert previous commit
-      ]
+        'perf', // Performance improvements
+        'test', // Adding or updating tests
+        'build', // Build system changes
+        'ci', // CI/CD changes
+        'chore', // Maintenance tasks
+        'revert', // Revert previous commit
+      ],
     ],
     // Subject must not be empty
     'subject-empty': [2, 'never'],
     // Subject must not end with period
     'subject-full-stop': [2, 'never', '.'],
     // Subject must be lowercase
-    'subject-case': [
-      2,
-      'never',
-      ['sentence-case', 'start-case', 'pascal-case', 'upper-case']
-    ],
+    'subject-case': [2, 'never', ['sentence-case', 'start-case', 'pascal-case', 'upper-case']],
     // Body must have blank line before it
     'body-leading-blank': [1, 'always'],
     // Footer must have blank line before it
@@ -55,15 +51,15 @@ module.exports = {
       1,
       'always',
       [
-        'rules',     // Rule changes
+        'rules', // Rule changes
         'formatter', // Formatter settings
-        'deps',      // Dependencies
-        'ci',        // CI/CD
-        'docs',      // Documentation
-        'examples',  // Example configurations
-        'tests',     // Tests
-        'release'    // Release-related
-      ]
-    ]
-  }
-}
+        'deps', // Dependencies
+        'ci', // CI/CD
+        'docs', // Documentation
+        'examples', // Example configurations
+        'tests', // Tests
+        'release', // Release-related
+      ],
+    ],
+  },
+};

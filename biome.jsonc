@@ -1,393 +1,391 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.3.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.3.5/schema.json",
 
-	// Version-control integration so Biome can work with changed files, ignore rules, etc.
-	"vcs": {
-		"enabled": true, // Enable VCS-aware features (e.g. only lint changed files in some commands)
-		"clientKind": "git", // We use Git as the VCS backend
-		"useIgnoreFile": true, // Respect .gitignore when scanning files
-		"defaultBranch": "main" // Default base branch used for comparisons
-	},
+  // Version-control integration so Biome can work with changed files, ignore rules, etc.
+  "vcs": {
+    "enabled": true, // Enable VCS-aware features (e.g. only lint changed files in some commands)
+    "clientKind": "git", // We use Git as the VCS backend
+    "useIgnoreFile": true, // Respect .gitignore when scanning files
+    "defaultBranch": "main" // Default base branch used for comparisons
+  },
 
-	"files": {
-		"ignoreUnknown": true, // Skip files with unknown extensions (binaries, images, etc.)
-		"includes": [
-			"**", // Start from everything, then exclude heavy / generated folders
+  "files": {
+    "ignoreUnknown": true, // Skip files with unknown extensions (binaries, images, etc.)
+    "includes": [
+      "**", // Start from everything, then exclude heavy / generated folders
 
-			// Deps / Package manager: vendor code we never want to lint/format
-			"!**/node_modules",
-			"!**/.pnpm",
-			"!**/.yarn",
-			"!**/.yarn/cache",
-			"!**/.npm",
-			"!**/.cache",
+      // Deps / Package manager: vendor code we never want to lint/format
+      "!**/node_modules",
+      "!**/.pnpm",
+      "!**/.yarn",
+      "!**/.yarn/cache",
+      "!**/.npm",
+      "!**/.cache",
 
-			// VCS & IDE: local tooling config, not part of source formatting
-			"!**/.git",
-			"!**/.svn",
-			"!**/.hg",
-			"!**/.idea",
-			"!**/.vscode",
+      // VCS & IDE: local tooling config, not part of source formatting
+      "!**/.git",
+      "!**/.svn",
+      "!**/.hg",
+      "!**/.idea",
+      "!**/.vscode",
 
-			// Build / Output / Static: generated artifacts, should never be edited by hand
-			"!**/dist",
-			"!**/build",
-			"!**/out",
-			"!**/public",
-			"!**/static",
-			"!**/.output", // Nuxt 3
-			"!**/.next",
-			"!**/.turbo",
-			"!**/.nuxt",
-			"!**/.svelte-kit",
-			"!**/.angular",
-			"!**/.expo",
-			"!**/.parcel-cache",
-			"!**/.webpack",
-			"!**/.rollup.cache",
-			"!**/.vercel",
-			"!**/.netlify",
+      // Build / Output / Static: generated artifacts, should never be edited by hand
+      "!**/dist",
+      "!**/build",
+      "!**/out",
+      "!**/public",
+      "!**/static",
+      "!**/.output", // Nuxt 3
+      "!**/.next",
+      "!**/.turbo",
+      "!**/.nuxt",
+      "!**/.svelte-kit",
+      "!**/.angular",
+      "!**/.expo",
+      "!**/.parcel-cache",
+      "!**/.webpack",
+      "!**/.rollup.cache",
+      "!**/.vercel",
+      "!**/.netlify",
 
-			// Cache / Tmp / Coverage: transient data and coverage reports
-			"!**/coverage",
-			"!**/.nyc_output",
-			"!**/tmp",
-			"!**/temp",
-			"!**/__registry__",
-			"!**/.sass-cache",
+      // Cache / Tmp / Coverage: transient data and coverage reports
+      "!**/coverage",
+      "!**/.nyc_output",
+      "!**/tmp",
+      "!**/temp",
+      "!**/__registry__",
+      "!**/.sass-cache",
 
-			// Test tools artifacts: large, auto-generated outputs from e2e tools
-			"!**/cypress/videos",
-			"!**/cypress/screenshots",
-			"!**/playwright-report",
-			"!**/test-results",
-			"!**/__snapshots__",
+      // Test tools artifacts: large, auto-generated outputs from e2e tools
+      "!**/cypress/videos",
+      "!**/cypress/screenshots",
+      "!**/playwright-report",
+      "!**/test-results",
+      "!**/__snapshots__",
 
-			// Minified / Logs / Env: not meant for auto-formatting or linting
-			"!**/*.min.css",
-			"!**/*.min.js",
-			"!**/*.log",
-			"!**/.env",
-			"!**/.env.*",
+      // Minified / Logs / Env: not meant for auto-formatting or linting
+      "!**/*.min.css",
+      "!**/*.min.js",
+      "!**/*.log",
+      "!**/.env",
+      "!**/.env.*",
 
-			// Lock & Manifest: lock files are machine-generated, we keep them untouched
-			"!**/package-lock.json",
-			"!**/pnpm-lock.yaml",
-			"!**/yarn.lock",
-			"!**/npm-shrinkwrap.json",
-			"!**/shrinkwrap.yaml"
-		]
-	},
+      // Lock & Manifest: lock files are machine-generated, we keep them untouched
+      "!**/package-lock.json",
+      "!**/pnpm-lock.yaml",
+      "!**/yarn.lock",
+      "!**/npm-shrinkwrap.json",
+      "!**/shrinkwrap.yaml"
+    ]
+  },
 
-	"formatter": {
-		"indentStyle": "space", // Enforce spaces instead of tabs for indentation
-		"lineWidth": 100, // Slightly wider lines for modern screens
-		"useEditorconfig": true // Allow .editorconfig to override global formatting where present
-	},
+  "formatter": {
+    "indentStyle": "space", // Enforce spaces instead of tabs for indentation
+    "lineWidth": 100, // Slightly wider lines for modern screens
+    "useEditorconfig": true // Allow .editorconfig to override global formatting where present
+  },
 
-	"linter": {
-		"rules": {
-			"a11y": {
-				"noSvgWithoutTitle": "off",
-				"useButtonType": "off",
-				"useKeyWithClickEvents": "off",
-				"useValidAnchor": "warn"
-			},
+  "linter": {
+    "rules": {
+      "a11y": {
+        "noSvgWithoutTitle": "off",
+        "useButtonType": "off",
+        "useKeyWithClickEvents": "off",
+        "useValidAnchor": "warn"
+      },
 
-			// Code complexity / readability: keep code clean without being too strict
-			"complexity": {
-				"noAdjacentSpacesInRegex": "error",
-				"noArguments": "error",
-				"noBannedTypes": "error",
-				"noCommaOperator": "error",
-				"noExtraBooleanCast": "error",
-				"noUselessCatch": "error",
-				"noUselessConstructor": "error",
-				"noUselessFragments": "warn",
-				"noUselessLabel": "error",
-				"noUselessLoneBlockStatements": "error",
-				"noUselessRename": "error",
-				"noUselessTernary": "warn",
-				"useLiteralKeys": "error",
-				"useNumericLiterals": "error",
-				"useOptionalChain": "warn",
-				"noForEach": "off" // We allow forEach in our code style
-			},
+      // Code complexity / readability: keep code clean without being too strict
+      "complexity": {
+        "noAdjacentSpacesInRegex": "error",
+        "noArguments": "error",
+        "noBannedTypes": "error",
+        "noCommaOperator": "error",
+        "noExtraBooleanCast": "error",
+        "noUselessCatch": "error",
+        "noUselessConstructor": "error",
+        "noUselessFragments": "warn",
+        "noUselessLabel": "error",
+        "noUselessLoneBlockStatements": "error",
+        "noUselessRename": "error",
+        "noUselessTernary": "warn",
+        "useLiteralKeys": "error",
+        "useNumericLiterals": "error",
+        "useOptionalChain": "warn",
+        "noForEach": "off" // We allow forEach in our code style
+      },
 
-			// Correctness: rules that catch real bugs and runtime issues
-			"correctness": {
-				"noChildrenProp": "error",
-				"noConstAssign": "error",
-				"noConstantCondition": "error",
-				"noEmptyCharacterClassInRegex": "error",
-				"noEmptyPattern": "error",
-				"noGlobalObjectCalls": "error",
-				"noInvalidBuiltinInstantiation": "error",
-				"noInvalidConstructorSuper": "error",
-				"noInvalidUseBeforeDeclaration": "error",
-				"noNodejsModules": "off", // Allow Node.js built-in modules in this project
-				"noNonoctalDecimalEscape": "error",
-				"noPrecisionLoss": "error",
-				"noSelfAssign": "error",
-				"noSetterReturn": "error",
-				"noSwitchDeclarations": "error",
-				"noUndeclaredVariables": "error",
-				"noUnreachable": "error",
-				"noUnreachableSuper": "error",
-				"noUnsafeFinally": "error",
-				"noUnsafeOptionalChaining": "error",
-				"noUnusedLabels": "error",
-				"noUnusedPrivateClassMembers": "warn",
-				"noUnusedVariables": "error",
-				"useExhaustiveDependencies": "warn", // Help keep React hook deps lists in sync
-				"useHookAtTopLevel": "error", // Enforce React hook usage rules
-				"useIsNan": "error",
-				"useValidForDirection": "error",
-				"useValidTypeof": "error",
-				"useYield": "error"
-			},
+      // Correctness: rules that catch real bugs and runtime issues
+      "correctness": {
+        "noChildrenProp": "error",
+        "noConstAssign": "error",
+        "noConstantCondition": "error",
+        "noEmptyCharacterClassInRegex": "error",
+        "noEmptyPattern": "error",
+        "noGlobalObjectCalls": "error",
+        "noInvalidBuiltinInstantiation": "error",
+        "noInvalidConstructorSuper": "error",
+        "noInvalidUseBeforeDeclaration": "error",
+        "noNodejsModules": "off", // Allow Node.js built-in modules in this project
+        "noNonoctalDecimalEscape": "error",
+        "noPrecisionLoss": "error",
+        "noSelfAssign": "error",
+        "noSetterReturn": "error",
+        "noSwitchDeclarations": "error",
+        "noUndeclaredVariables": "error",
+        "noUnreachable": "error",
+        "noUnreachableSuper": "error",
+        "noUnsafeFinally": "error",
+        "noUnsafeOptionalChaining": "error",
+        "noUnusedLabels": "error",
+        "noUnusedPrivateClassMembers": "warn",
+        "noUnusedVariables": "error",
+        "useExhaustiveDependencies": "warn", // Help keep React hook deps lists in sync
+        "useHookAtTopLevel": "error", // Enforce React hook usage rules
+        "useIsNan": "error",
+        "useValidForDirection": "error",
+        "useValidTypeof": "error",
+        "useYield": "error"
+      },
 
-			"nursery": {
-				// Keep Tailwind / class utilities sorted for cleaner diffs and easier search
-				"useSortedClasses": {
-					"level": "warn",
-					"fix": "safe",
-					"options": {
-						"attributes": ["classList"],
-						"functions": ["clsx", "cva", "cn", "tw", "tw.*", "twMerge"]
-					}
-				}
-			},
+      "nursery": {
+        // Keep Tailwind / class utilities sorted for cleaner diffs and easier search
+        "useSortedClasses": {
+          "level": "warn",
+          "fix": "safe",
+          "options": {
+            "attributes": ["classList"],
+            "functions": ["clsx", "cva", "cn", "tw", "tw.*", "twMerge"]
+          }
+        }
+      },
 
-			// Performance: discourage patterns that cause unnecessary allocations or slow paths
-			"performance": {
-				"noAccumulatingSpread": "warn",
-				"noDelete": "warn"
-			},
+      // Performance: discourage patterns that cause unnecessary allocations or slow paths
+      "performance": {
+        "noAccumulatingSpread": "warn",
+        "noDelete": "warn"
+      },
 
-			// Security: basic XSS / injection guards and secret detection
-			"security": {
-				"noBlankTarget": "error",
-				"noDangerouslySetInnerHtml": "warn",
-				"noDangerouslySetInnerHtmlWithChildren": "error",
-				"noGlobalEval": "error",
-				"noSecrets": "error" // Avoid committing API keys or secrets in source
-			},
+      // Security: basic XSS / injection guards and secret detection
+      "security": {
+        "noBlankTarget": "error",
+        "noDangerouslySetInnerHtml": "warn",
+        "noDangerouslySetInnerHtmlWithChildren": "error",
+        "noGlobalEval": "error",
+        "noSecrets": "error" // Avoid committing API keys or secrets in source
+      },
 
-			// Style: enforce consistent style but with some flexibility for our workflow
-			"style": {
-				"noDefaultExport": "off", // We allow default exports by default (see overrides for configs)
-				"noImplicitBoolean": "off",
-				"noInferrableTypes": "warn",
-				"noNamespace": "error",
-				"noNegationElse": "off",
-				"noNonNullAssertion": "off",
-				"noParameterAssign": "warn",
-				"noRestrictedGlobals": "off",
-				"noUnusedTemplateLiteral": "warn",
-				"noUselessElse": "warn",
-				"useArrayLiterals": "error",
-				"useBlockStatements": "off",
-				"useCollapsedElseIf": "warn",
-				"useConsistentArrayType": {
-					"level": "warn",
-					"options": { "syntax": "shorthand" }
-				},
-				"useConst": "error",
-				"useDefaultParameterLast": "warn",
-				"useEnumInitializers": "warn",
-				"useExponentiationOperator": "warn",
-				"useFragmentSyntax": "warn",
-				"useImportType": "warn",
-				"useLiteralEnumMembers": "error",
-				"useNodejsImportProtocol": "off",
-				"useNumberNamespace": "error",
-				"useSelfClosingElements": "warn",
-				"useShorthandAssign": "warn",
-				"useSingleVarDeclarator": "warn",
-				"useTemplate": "warn",
-				"noProcessEnv": "warn", // Encourage a typed config layer over raw process.env
-				"noNestedTernary": "info", // Only soft guidance for nested ternaries
-				"useCollapsedIf": "info",
-				"noRestrictedImports": {
-					"level": "warn",
-					"options": {
-						"paths": {
-							"lodash": "Use lodash/<name> instead.",
-							"lodash-es": "Use lodash-es/<name> instead."
-						}
-					}
-				}
-			},
+      // Style: enforce consistent style but with some flexibility for our workflow
+      "style": {
+        "noDefaultExport": "off", // We allow default exports by default (see overrides for configs)
+        "noImplicitBoolean": "off",
+        "noInferrableTypes": "warn",
+        "noNamespace": "error",
+        "noNegationElse": "off",
+        "noNonNullAssertion": "off",
+        "noParameterAssign": "warn",
+        "noRestrictedGlobals": "off",
+        "noUnusedTemplateLiteral": "warn",
+        "noUselessElse": "warn",
+        "useArrayLiterals": "error",
+        "useBlockStatements": "off",
+        "useCollapsedElseIf": "warn",
+        "useConsistentArrayType": {
+          "level": "warn",
+          "options": { "syntax": "shorthand" }
+        },
+        "useConst": "error",
+        "useDefaultParameterLast": "warn",
+        "useEnumInitializers": "warn",
+        "useExponentiationOperator": "warn",
+        "useFragmentSyntax": "warn",
+        "useImportType": "warn",
+        "useLiteralEnumMembers": "error",
+        "useNodejsImportProtocol": "off",
+        "useNumberNamespace": "error",
+        "useSelfClosingElements": "warn",
+        "useShorthandAssign": "warn",
+        "useSingleVarDeclarator": "warn",
+        "useTemplate": "warn",
+        "noProcessEnv": "warn", // Encourage a typed config layer over raw process.env
+        "noNestedTernary": "info", // Only soft guidance for nested ternaries
+        "useCollapsedIf": "info",
+        "noRestrictedImports": {
+          "level": "warn",
+          "options": {
+            "paths": {
+              "lodash": "Use lodash/<name> instead.",
+              "lodash-es": "Use lodash-es/<name> instead."
+            }
+          }
+        }
+      },
 
-			// Suspicious: catch smells that often hide subtle bugs
-			"suspicious": {
-				"noArrayIndexKey": "warn",
-				"noAssignInExpressions": "error",
-				"noAsyncPromiseExecutor": "error",
-				"noCatchAssign": "error",
-				"noClassAssign": "error",
-				"noCommentText": "warn",
-				"noCompareNegZero": "error",
-				"noConfusingLabels": "error",
-				"noConfusingVoidType": "warn",
-				"noConsole": { "level": "off", "options": { "allow": ["log"] } },
-				"noControlCharactersInRegex": "error",
-				"noDebugger": "warn",
-				"noDoubleEquals": "warn",
-				"noDuplicateCase": "error",
-				"noDuplicateClassMembers": "error",
-				"noDuplicateJsxProps": "error",
-				"noDuplicateObjectKeys": "error",
-				"noDuplicateParameters": "error",
-				"noEmptyBlockStatements": "warn",
-				"noExplicitAny": "off", // We allow any in general (tests further relaxed in overrides)
-				"noExtraNonNullAssertion": "error",
-				"noFallthroughSwitchClause": "error",
-				"noFunctionAssign": "error",
-				"noGlobalAssign": "error",
-				"noImportAssign": "error",
-				"noLabelVar": "error",
-				"noMisleadingCharacterClass": "error",
-				"noMisleadingInstantiator": "error",
-				"noPrototypeBuiltins": "off",
-				"noRedeclare": "error",
-				"noSelfCompare": "warn",
-				"noShadowRestrictedNames": "error",
-				"noUnsafeDeclarationMerging": "error",
-				"noUnsafeNegation": "error",
-				"noVar": "error",
-				"noWith": "error",
-				"useAwait": "warn",
-				"useDefaultSwitchClauseLast": "error",
-				"useGetterReturn": "error",
-				"useNamespaceKeyword": "error",
-				"useAdjacentOverloadSignatures": "warn" // Keep TS overloads grouped for readability
-			}
-		}
-	},
+      // Suspicious: catch smells that often hide subtle bugs
+      "suspicious": {
+        "noArrayIndexKey": "warn",
+        "noAssignInExpressions": "error",
+        "noAsyncPromiseExecutor": "error",
+        "noCatchAssign": "error",
+        "noClassAssign": "error",
+        "noCommentText": "warn",
+        "noCompareNegZero": "error",
+        "noConfusingLabels": "error",
+        "noConfusingVoidType": "warn",
+        "noConsole": { "level": "off", "options": { "allow": ["log"] } },
+        "noControlCharactersInRegex": "error",
+        "noDebugger": "warn",
+        "noDoubleEquals": "warn",
+        "noDuplicateCase": "error",
+        "noDuplicateClassMembers": "error",
+        "noDuplicateJsxProps": "error",
+        "noDuplicateObjectKeys": "error",
+        "noDuplicateParameters": "error",
+        "noEmptyBlockStatements": "warn",
+        "noExplicitAny": "off", // We allow any in general (tests further relaxed in overrides)
+        "noExtraNonNullAssertion": "error",
+        "noFallthroughSwitchClause": "error",
+        "noFunctionAssign": "error",
+        "noGlobalAssign": "error",
+        "noImportAssign": "error",
+        "noLabelVar": "error",
+        "noMisleadingCharacterClass": "error",
+        "noMisleadingInstantiator": "error",
+        "noPrototypeBuiltins": "off",
+        "noRedeclare": "error",
+        "noSelfCompare": "warn",
+        "noShadowRestrictedNames": "error",
+        "noUnsafeDeclarationMerging": "error",
+        "noUnsafeNegation": "error",
+        "noVar": "error",
+        "noWith": "error",
+        "useAwait": "warn",
+        "useDefaultSwitchClauseLast": "error",
+        "useGetterReturn": "error",
+        "useNamespaceKeyword": "error",
+        "useAdjacentOverloadSignatures": "warn" // Keep TS overloads grouped for readability
+      }
+    }
+  },
 
-	"css": {
-		"linter": {
-			"enabled": true
-		},
-		"formatter": {
-			"enabled": true,
-			"indentStyle": "space",
-			"lineWidth": 100 // Match the JS/TS line width for consistency
-		},
-		"parser": {
-			"allowWrongLineComments": true, // Allow non-standard comments used by tooling/Tailwind
-			"cssModules": true, // Enable CSS Modules support
-			"tailwindDirectives": true // Understand Tailwind @-directives
-		},
-		"globals": ["@apply", "@source", "@theme", "@custom-variant"] // Custom at-rules used in our stack
-	},
+  "css": {
+    "linter": {
+      "enabled": true
+    },
+    "formatter": {
+      "enabled": true,
+      "indentStyle": "space",
+      "lineWidth": 100 // Match the JS/TS line width for consistency
+    },
+    "parser": {
+      "allowWrongLineComments": true, // Allow non-standard comments used by tooling/Tailwind
+      "cssModules": true, // Enable CSS Modules support
+      "tailwindDirectives": true // Understand Tailwind @-directives
+    },
+    "globals": ["@apply", "@source", "@theme", "@custom-variant"] // Custom at-rules used in our stack
+  },
 
-	"javascript": {
-		"formatter": {
-			"quoteStyle": "single", // Prefer single quotes in JS/TS
-			"quoteProperties": "preserve", // Do not aggressively change quoted/unquoted object keys
-			"trailingCommas": "es5" // Trailing commas where valid in ES5 (arrays, objects, etc.)
-		},
-		"globals": ["Cypress", "assert", "before", "cy", "context"] // Testing globals available in the environment
-	},
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single", // Prefer single quotes in JS/TS
+      "quoteProperties": "preserve", // Do not aggressively change quoted/unquoted object keys
+      "trailingCommas": "es5" // Trailing commas where valid in ES5 (arrays, objects, etc.)
+    },
+    "globals": ["Cypress", "assert", "before", "cy", "context"] // Testing globals available in the environment
+  },
 
-	"html": {
-		"formatter": {
-			"enabled": true,
-			"selfCloseVoidElements": "always" // Enforce <br /> / <img /> style for void elements
-		}
-	},
+  "html": {
+    "formatter": {
+      "enabled": true,
+      "selfCloseVoidElements": "always" // Enforce <br /> / <img /> style for void elements
+    }
+  },
 
-	"json": {
-		"formatter": {
-			"indentStyle": "space" // Keep JSON indentation aligned with the rest of the project
-		},
-		"parser": {
-			"allowComments": true, // Support JSONC-style comments in JSON files
-			"allowTrailingCommas": true // Allow trailing commas for easier editing
-		}
-	},
+  "json": {
+    "formatter": {
+      "indentStyle": "space" // Keep JSON indentation aligned with the rest of the project
+    },
+    "parser": {
+      "allowComments": true, // Support JSONC-style comments in JSON files
+      "allowTrailingCommas": true // Allow trailing commas for easier editing
+    }
+  },
 
-	"overrides": [
-		{
-			"includes": [
-				"**/*.spec.ts",
-				"**/*.spec.tsx",
-				"**/*.test.ts",
-				"**/*.test.tsx"
-			],
-			"linter": {
-				"rules": {
-					"suspicious": {
-						"noExplicitAny": "off" // Tests can use any for convenience and speed
-					}
-				}
-			}
-		},
-		{
-			"includes": ["**/*.config.ts", "**/*.config.js", "**/vite.config.ts"],
-			"linter": {
-				"rules": {
-					"style": {
-						"noDefaultExport": "off" // Config files are allowed to use default exports (common pattern)
-					}
-				}
-			}
-		},
-		{
-			"includes": [".all-contributorsrc"],
-			"javascript": {
-				"formatter": {
-					"quoteStyle": "double" // Match the community convention for this file
-				}
-			}
-		},
-		{
-			"includes": ["*.json5"],
-			"javascript": {
-				"formatter": {
-					"quoteProperties": "preserve",
-					"trailingCommas": "none",
-					"quoteStyle": "double" // Treat JSON5 configs with double quotes for compatibility
-				}
-			}
-		},
-		{
-			"includes": [
-				"**/*tsconfig.json",
-				"**/*tsconfig.*.json",
-				"**/*package.json"
-			],
-			"assist": {
-				"actions": {
-					"source": {
-						// Do not auto-sort top-level keys in tsconfig/package.json to keep a familiar/manual order
-						"useSortedKeys": "off"
-					}
-				}
-			}
-		},
-		{
-			"includes": ["**/tsconfig.json", "**/*tsconfig.*.json"],
-			"json": {
-				"parser": {
-					"allowComments": true, // tsconfig often contains comments
-					"allowTrailingCommas": true // Match TypeScript compiler's relaxed JSON parsing
-				}
-			}
-		}
-	],
+  "overrides": [
+    {
+      "includes": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx"],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noExplicitAny": "off" // Tests can use any for convenience and speed
+          }
+        }
+      }
+    },
+    {
+      "includes": ["**/*.config.ts", "**/*.config.js", "**/vite.config.ts"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noDefaultExport": "off" // Config files are allowed to use default exports (common pattern)
+          }
+        }
+      }
+    },
+    {
+      "includes": [".all-contributorsrc"],
+      "javascript": {
+        "formatter": {
+          "quoteStyle": "double" // Match the community convention for this file
+        }
+      }
+    },
+    {
+      "includes": ["*.json5"],
+      "javascript": {
+        "formatter": {
+          "quoteProperties": "preserve",
+          "trailingCommas": "none",
+          "quoteStyle": "double" // Treat JSON5 configs with double quotes for compatibility
+        }
+      }
+    },
+    {
+      "includes": [
+        "**/*tsconfig.json",
+        "**/*tsconfig.*.json",
+        "**/*package.json",
+        "**/*biome.json",
+        "**/*biome.jsonc",
+        "**/*.config.{json,jsonc,js,cjs,ts,cts,mts}"
+      ],
+      "assist": {
+        "actions": {
+          "source": {
+            // Do not auto-sort top-level keys to keep a familiar/manual order
+            "useSortedKeys": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["**/tsconfig.json", "**/*tsconfig.*.json"],
+      "json": {
+        "parser": {
+          "allowComments": true, // tsconfig often contains comments
+          "allowTrailingCommas": true // Match TypeScript compiler's relaxed JSON parsing
+        }
+      }
+    }
+  ],
 
-	"assist": {
-		"actions": {
-			"source": {
-				"organizeImports": "on", // Keep imports automatically ordered and deduplicated
-				"useSortedAttributes": "on", // Normalize JSX/HTML attribute order for stable diffs
-				"useSortedKeys": "on", // Sort object keys where it is safe and not overridden
-				"useSortedProperties": "on" // Sort properties in type/object shapes for consistency
-			}
-		}
-	}
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on", // Keep imports automatically ordered and deduplicated
+        "useSortedAttributes": "on", // Normalize JSX/HTML attribute order for stable diffs
+        "useSortedKeys": "on", // Sort object keys where it is safe and not overridden
+        "useSortedProperties": "on" // Sort properties in type/object shapes for consistency
+      }
+    }
+  }
 }

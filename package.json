@@ -31,14 +31,13 @@
   "scripts": {
     "prepublishOnly": "pnpm run validate",
     "validate": "npx npm-packlist-cli",
-    "format": "biome format --write .",
-    "lint": "biome lint .",
-    "check": "biome check --write .",
+    "format": "biome format . --write",
+    "check": "biome check .",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
   },
   "packageManager": "pnpm@10.20.0",
   "devDependencies": {
-    "@biomejs/biome": "^2.3.4",
+    "@biomejs/biome": "^2.3.5",
     "@commitlint/cli": "^19.0.0",
     "@commitlint/config-conventional": "^19.0.0",
     "@semantic-release/changelog": "^6.0.3",
