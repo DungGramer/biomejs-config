@@ -1,3 +1,16 @@
+## <small>1.1.2 (2025-11-17)</small>
+
+* fix: improve config stability and add TanStack Router support ([77322f6](https://github.com/DungGramer/biomejs-config/commit/77322f6))
+
+
+
+## [1.1.2](https://github.com/DungGramer/biomejs-config/compare/v1.1.1...v1.1.2) (2025-11-17)
+
+
+### Bug Fixes
+
+* improve config stability and add TanStack Router support ([77322f6](https://github.com/DungGramer/biomejs-config/commit/77322f65cd70722712c7d4702a5271aa19d2bf47))
+
 ## <small>1.1.1 (2025-11-14)</small>
 
 * fix: trigger v1.1.1 release to npm ([e5dd3ea](https://github.com/DungGramer/biomejs-config/commit/e5dd3ea))
