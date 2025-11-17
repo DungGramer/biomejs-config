@@ -170,8 +170,8 @@
         "noBlankTarget": "error",
         "noDangerouslySetInnerHtml": "warn",
         "noDangerouslySetInnerHtmlWithChildren": "error",
-        "noGlobalEval": "error",
-        "noSecrets": "error" // Avoid committing API keys or secrets in source
+        "noGlobalEval": "error"
+        // "noSecrets": "error" // Not stable: Avoid committing API keys or secrets in source
       },
 
       // Style: enforce consistent style but with some flexibility for our workflow
@@ -375,6 +375,13 @@
           "allowTrailingCommas": true // Match TypeScript compiler's relaxed JSON parsing
         }
       }
+    },
+    {
+      // Ignore linting and formatting for generated TanStack Router files
+      "includes": ["**/routeTree.gen.ts"],
+      "linter": { "enabled": false },
+      "formatter": { "enabled": false },
+      "assist": { "enabled": false }
     }
   ],
 
@@ -383,7 +390,7 @@
       "source": {
         "organizeImports": "on", // Keep imports automatically ordered and deduplicated
         "useSortedAttributes": "on", // Normalize JSX/HTML attribute order for stable diffs
-        "useSortedKeys": "on", // Sort object keys where it is safe and not overridden
+        // "useSortedKeys": "on", // Sort object keys where it is safe and not overridden
         "useSortedProperties": "on" // Sort properties in type/object shapes for consistency
       }
     }
