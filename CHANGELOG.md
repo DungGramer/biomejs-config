@@ -1,3 +1,16 @@
+## <small>1.1.3 (2025-11-19)</small>
+
+* fix: allow Static Element Interactions, Array Index Key ([57a7fc6](https://github.com/DungGramer/biomejs-config/commit/57a7fc6))
+
+
+
+## [1.1.3](https://github.com/DungGramer/biomejs-config/compare/v1.1.2...v1.1.3) (2025-11-19)
+
+
+### Bug Fixes
+
+* allow Static Element Interactions, Array Index Key ([57a7fc6](https://github.com/DungGramer/biomejs-config/commit/57a7fc644281d9ca8a53f2411939ed666dd0beb3))
+
 ## <small>1.1.2 (2025-11-17)</small>
 
 * fix: improve config stability and add TanStack Router support ([77322f6](https://github.com/DungGramer/biomejs-config/commit/77322f6))
