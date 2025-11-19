@@ -91,7 +91,8 @@
         "noSvgWithoutTitle": "off",
         "useButtonType": "off",
         "useKeyWithClickEvents": "off",
-        "useValidAnchor": "warn"
+        "useValidAnchor": "warn",
+        "noStaticElementInteractions": "off"
       },
 
       // Code complexity / readability: keep code clean without being too strict
@@ -213,8 +214,7 @@
           "level": "warn",
           "options": {
             "paths": {
-              "lodash": "Use lodash/<name> instead.",
-              "lodash-es": "Use lodash-es/<name> instead."
+              "lodash": "Use lodash/<name> instead."
             }
           }
         }
@@ -222,7 +222,7 @@
 
       // Suspicious: catch smells that often hide subtle bugs
       "suspicious": {
-        "noArrayIndexKey": "warn",
+        "noArrayIndexKey": "off", // Allow array index as key for simplicity in some cases
         "noAssignInExpressions": "error",
         "noAsyncPromiseExecutor": "error",
         "noCatchAssign": "error",

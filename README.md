@@ -74,8 +74,12 @@ For the best developer experience, install the [Biome VSCode extension](https://
 
   // Auto-fix on save
   "editor.codeActionsOnSave": {
+    "source.organizeImports.biome": "explicit",
+    "source.fixAll.biome": "explicit",
     "quickfix.biome": "explicit",
-    "source.organizeImports.biome": "explicit"  // Auto-organize imports on save
+    "addMissingImports": "explicit",
+    "source.action.useSortedAttributes.biome": "explicit",
+    "source.action.useSortedProperties.biome": "explicit",
   },
 
   // Disable other formatters to avoid conflicts
